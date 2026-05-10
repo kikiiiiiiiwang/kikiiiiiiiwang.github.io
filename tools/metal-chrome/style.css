@@ -1,0 +1,180 @@
+:root {
+    --bg-primary: #ffffff;
+    --bg-sidebar: #ffffff;
+    --accent: #000000;
+    --accent-hover: #333333;
+    --text-main: #000000;
+    --text-muted: #888888;
+    --border-color: #eeeeee;
+    --shadow: 0 10px 40px rgba(0,0,0,0.05);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-main);
+    height: 100vh;
+    overflow: hidden;
+}
+
+.app-container {
+    display: flex;
+    height: 100%;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 320px;
+    background-color: var(--bg-sidebar);
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    padding: 32px 24px;
+    z-index: 10;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--accent);
+    margin-bottom: 8px;
+}
+
+.logo h1 {
+    font-size: 1.2rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.logo h1 span {
+    color: var(--text-muted);
+    font-weight: 400;
+}
+
+.tagline {
+    font-size: 11px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.controls-wrapper {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 8px;
+    margin: 24px 0;
+}
+
+.control-group {
+    margin-bottom: 24px;
+}
+
+.control-group label {
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: var(--text-muted);
+}
+
+/* Upload Box */
+.upload-box {
+    border: 1px dashed var(--border-color);
+    border-radius: 8px;
+    padding: 24px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.2s;
+    background: rgba(255,255,255,0.02);
+}
+
+.upload-box:hover {
+    border-color: var(--accent);
+    background: rgba(255,255,255,0.05);
+}
+
+.upload-box i {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.upload-box span {
+    display: block;
+    font-size: 11px;
+}
+
+/* Range Inputs */
+input[type="range"] {
+    width: 100%;
+    accent-color: var(--accent);
+    background: #333;
+    height: 4px;
+    border-radius: 2px;
+    appearance: none;
+}
+
+/* Buttons */
+.primary-btn {
+    width: 100%;
+    padding: 14px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.primary-btn:hover {
+    background-color: #fff;
+    transform: translateY(-1px);
+}
+
+/* Viewport */
+.viewport {
+    flex: 1;
+    position: relative;
+    background: #fafafa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.canvas-wrapper {
+    box-shadow: var(--shadow);
+    background: #000;
+    cursor: crosshair;
+}
+
+.interaction-hint {
+    position: absolute;
+    bottom: 24px;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(8px);
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 11px;
+    color: var(--text-muted);
+}
+
+/* Custom Scrollbar */
+.controls-wrapper::-webkit-scrollbar {
+    width: 3px;
+}
+
+.controls-wrapper::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+}

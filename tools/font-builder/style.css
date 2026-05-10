@@ -1,0 +1,334 @@
+:root {
+    --bg-primary: #ffffff;
+    --bg-sidebar: #ffffff;
+    --accent: #000000;
+    --text-main: #1a1a1a;
+    --text-muted: #888888;
+    --border-color: #eeeeee;
+    --shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Inter", -apple-system, sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-main);
+    height: 100vh;
+    overflow: hidden;
+}
+
+.app-container {
+    display: flex;
+    height: 100%;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 320px;
+    background-color: var(--bg-sidebar);
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    padding: 32px 24px;
+    z-index: 10;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--text-main);
+    margin-bottom: 8px;
+}
+
+.logo h1 {
+    font-size: 1.2rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.logo h1 span {
+    color: var(--text-muted);
+    font-weight: 400;
+}
+
+.tagline {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.controls-wrapper {
+    flex: 1;
+    overflow-y: auto;
+    margin-top: 32px;
+}
+
+.control-group {
+    margin-bottom: 28px;
+}
+
+.control-group label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+}
+
+/* Grid Presets */
+.grid-presets {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.size-btn {
+    padding: 8px;
+    border: 1px solid var(--border-color);
+    background: #fff;
+    font-family: inherit;
+    font-size: 0.8rem;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.size-btn.active {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+}
+
+/* Shape Selector */
+.shape-selector {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.shape-btn {
+    aspect-ratio: 1;
+    border: 1px solid var(--border-color);
+    background: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    padding: 8px;
+}
+
+.shape-btn:hover {
+    border-color: var(--accent);
+}
+
+.shape-btn.active {
+    border-color: var(--accent);
+    background: #f9f9f9;
+}
+
+.shape-btn .icon {
+    width: 100%;
+    height: 100%;
+    background: #ccc;
+}
+
+.shape-btn.active .icon {
+    background: var(--accent);
+}
+
+/* Font Controls */
+.font-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#font-family-select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background: #fff;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+/* Shape Icons */
+.icon.square { border-radius: 0; }
+.icon.circle { border-radius: 50%; }
+.icon.arc-tl { border-radius: 100% 0 0 0; }
+.icon.arc-tr { border-radius: 0 100% 0 0; }
+.icon.arc-bl { border-radius: 0 0 0 100%; }
+.icon.arc-br { border-radius: 0 0 100% 0; }
+
+/* Inputs */
+#preview-text {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 1rem;
+    letter-spacing: 2px;
+}
+
+input[type="range"] {
+    width: 100%;
+    accent-color: var(--accent);
+}
+
+/* Buttons */
+.sidebar-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border-color);
+}
+
+.primary-btn, .secondary-btn {
+    width: 100%;
+    padding: 14px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-family: inherit;
+    transition: 0.2s;
+}
+
+.primary-btn {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+}
+
+.primary-btn:hover { background: #333; }
+
+.secondary-btn {
+    background: #fff;
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+}
+
+.secondary-btn:hover { background: #f9f9f9; }
+
+/* Viewport */
+.viewport {
+    flex: 1;
+    background: #fafafa;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    padding: 40px;
+    overflow-y: auto;
+}
+
+/* Grid Editor */
+.editor-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.grid-container {
+    display: grid;
+    background: #fff;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow);
+    padding: 10px;
+}
+
+.grid-cell {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #f0f0f0;
+    cursor: pointer;
+    transition: 0.1s;
+    position: relative;
+    overflow: hidden;
+}
+
+.grid-cell:hover {
+    background: #f9f9f9;
+}
+
+.grid-cell.ghost-active {
+    background-color: #fcfcfc;
+    border-color: #e0e0e0;
+}
+
+.grid-cell.ghost-active::before {
+    content: '';
+    position: absolute;
+    inset: 5px;
+    background: #f5f5f5;
+    z-index: 0;
+}
+
+/* Shapes in Grid and Preview */
+.module {
+    width: 100%;
+    height: 100%;
+    background: var(--accent);
+}
+
+.module.square { border-radius: 0; }
+.module.circle { border-radius: 50%; }
+.module.arc-tl { border-radius: 100% 0 0 0; }
+.module.arc-tr { border-radius: 0 100% 0 0; }
+.module.arc-bl { border-radius: 0 0 0 100%; }
+.module.arc-br { border-radius: 0 0 100% 0; }
+
+.editor-hint {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+/* Preview System */
+.preview-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.preview-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+    width: 100%;
+}
+
+.preview-char {
+    display: grid;
+    background: transparent;
+}
+
+.preview-label {
+    font-size: 0.6rem;
+    font-weight: 800;
+    letter-spacing: 3px;
+    color: #ccc;
+    border-top: 1px solid #eee;
+    padding-top: 8px;
+    width: 100%;
+    text-align: center;
+}

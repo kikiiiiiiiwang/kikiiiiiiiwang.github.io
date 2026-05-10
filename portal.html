@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variant Suite | 酒后诗人K</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <aside class="portal-sidebar">
+        <div class="logo-section">
+            <h1>Variant <span>Suite</span></h1>
+            <p>Design & Toolset Collection</p>
+        </div>
+        
+        <nav class="nav-menu">
+            <span class="nav-group-label">General</span>
+            <div class="nav-item active" data-tool="welcome">
+                <i class="fas fa-home"></i>
+                <span>Dashboard</span>
+            </div>
+            
+            <span class="nav-group-label" style="margin-top: 32px;">Creative Tools</span>
+            <div class="nav-item" data-tool="lace">
+                <i class="fas fa-certificate"></i>
+                <span>Lace Typeface</span>
+            </div>
+            <div class="nav-item" data-tool="graphic">
+                <i class="fas fa-vector-square"></i>
+                <span>Graphic Lace</span>
+            </div>
+            <div class="nav-item" data-tool="image-lace">
+                <i class="fas fa-magic"></i>
+                <span>Advanced Lace</span>
+            </div>
+            <div class="nav-item" data-tool="metal">
+                <i class="fas fa-gem"></i>
+                <span>Liquid Chrome</span>
+            </div>
+            <div class="nav-item" data-tool="xerox">
+                <i class="fas fa-print"></i>
+                <span>Xerox Art</span>
+            </div>
+            <div class="nav-item" data-tool="font">
+                <i class="fas fa-font"></i>
+                <span>Font Builder</span>
+            </div>
+            <div class="nav-item" data-tool="thermal">
+                <i class="fas fa-fire-alt"></i>
+                <span>Thermal Typography</span>
+            </div>
+            <div class="nav-item" data-tool="mosaic">
+                <i class="fas fa-th"></i>
+                <span>Variable Mosaic</span>
+            </div>
+            <div class="nav-item" data-tool="abstract">
+                <i class="fas fa-draw-polygon"></i>
+                <span>Abstract Shapes</span>
+            </div>
+            <div class="nav-item" data-tool="grid-draw">
+                <i class="fas fa-border-all"></i>
+                <span>Grid Draw</span>
+            </div>
+        </nav>
+
+        <div class="portal-footer">
+            <div class="user-info">
+                <div class="avatar">K</div>
+                <div class="username">酒后诗人K</div>
+            </div>
+        </div>
+    </aside>
+
+    <main class="main-stage">
+        <div id="welcome" class="welcome-screen">
+            <h1>Endless designs for your ideas.</h1>
+            <p>作品集辅导专属工具集。集成了从蕾丝纹理生成到液态金属效果转换的一系列创意工具，助力你的艺术创作。</p>
+            
+            <div class="welcome-stats">
+                <div class="stat-item">
+                    <h3>05</h3>
+                    <p>Creative Tools</p>
+                </div>
+                <div class="stat-item">
+                    <h3>∞</h3>
+                    <p>Possibilities</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Iframe Tool Containers -->
+        <iframe id="tool-lace" src="tools/lace-type/index.html"></iframe>
+        <iframe id="tool-graphic" src="tools/graphic-lace/index.html"></iframe>
+        <iframe id="tool-image-lace" src="tools/image-to-lace/index.html"></iframe>
+        <iframe id="tool-metal" src="tools/metal-chrome/index.html"></iframe>
+        <iframe id="tool-xerox" src="tools/xerox-art/index.html"></iframe>
+        <iframe id="tool-font" src="tools/font-builder/index.html"></iframe>
+        <iframe id="tool-thermal" src="tools/thermal-typography/index.html"></iframe>
+        <iframe id="tool-mosaic" src="tools/variable-mosaic/index.html"></iframe>
+        <iframe id="tool-abstract" src="tools/abstract-shapes/index.html"></iframe>
+        <iframe id="tool-grid-draw" src="tools/grid-draw/index.html"></iframe>
+    </main>
+
+    <script>
+        const navItems = document.querySelectorAll('.nav-item');
+        const iframes = document.querySelectorAll('iframe');
+        const welcome = document.getElementById('welcome');
+
+        navItems.forEach(item => {
+            item.onclick = () => {
+                const tool = item.dataset.tool;
+                
+                navItems.forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+
+                if (tool === 'welcome') {
+                    welcome.style.display = 'flex';
+                    iframes.forEach(f => f.classList.remove('active'));
+                } else {
+                    welcome.style.display = 'none';
+                    iframes.forEach(f => f.classList.remove('active'));
+                    const targetFrame = document.getElementById(`tool-${tool}`);
+                    if (targetFrame) {
+                        targetFrame.classList.add('active');
+                    }
+                }
+            };
+        });
+    </script>
+</body>
+</html>

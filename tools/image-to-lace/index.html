@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image to Lace | 蕾丝/十字绣效果生成器</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <header>
+                <div class="logo">
+                    <i class="fas fa-certificate"></i>
+                    <h1>LaceGen</h1>
+                </div>
+                <p class="tagline">图片转蕾丝/十字绣效果</p>
+            </header>
+
+            <div class="controls-wrapper">
+                <!-- Image Upload -->
+                <section class="control-group">
+                    <label>导入图片</label>
+                    <div class="upload-box" id="drop-zone">
+                        <i class="fas fa-image"></i>
+                        <span>点击或拖拽图片</span>
+                        <input type="file" id="image-input" accept="image/*" hidden>
+                    </div>
+                </section>
+
+                <!-- Pattern Settings -->
+                <section class="control-group">
+                    <label>蕾丝模式</label>
+                    <div class="pattern-selector">
+                        <button class="mode-btn active" data-mode="x-stitch" title="十字绣">
+                            <i class="fas fa-times"></i>
+                        </button>
+                        <button class="mode-btn" data-mode="dot" title="圆点">
+                            <i class="fas fa-circle"></i>
+                        </button>
+                        <button class="mode-btn" data-mode="lace-star" title="蕾丝花星">
+                            <i class="fas fa-asterisk"></i>
+                        </button>
+                        <button class="mode-btn" data-mode="mesh" title="网格">
+                            <i class="fas fa-th"></i>
+                        </button>
+                    </div>
+                </section>
+
+                <section class="control-group">
+                    <label>密度 (单元大小): <span id="density-val">8</span></label>
+                    <input type="range" id="density" min="4" max="24" value="8">
+                </section>
+
+                <section class="control-group">
+                    <label>阈值 (细节保留): <span id="threshold-val">128</span></label>
+                    <input type="range" id="threshold" min="0" max="255" value="128">
+                </section>
+
+                <section class="control-group">
+                    <label>线条粗细: <span id="weight-val">1.5</span></label>
+                    <input type="range" id="weight" min="0.5" max="5" value="1.5" step="0.5">
+                </section>
+
+                <section class="control-group">
+                    <label>颜色设置</label>
+                    <div class="color-picker-row">
+                        <div class="color-input">
+                            <span>前景</span>
+                            <input type="color" id="fg-color" value="#000000">
+                        </div>
+                        <div class="color-input">
+                            <span>背景</span>
+                            <input type="color" id="bg-color" value="#ffffff">
+                        </div>
+                    </div>
+                </section>
+
+                <section class="control-group">
+                    <label>图片缩放: <span id="scale-val">1.0</span></label>
+                    <input type="range" id="scale" min="0.1" max="3" value="1" step="0.1">
+                </section>
+            </div>
+
+            <footer class="sidebar-footer">
+                <button id="download-btn" class="primary-btn">
+                    <i class="fas fa-download"></i> 保存图片
+                </button>
+            </footer>
+        </aside>
+
+        <main class="viewport">
+            <div class="canvas-wrapper" id="canvas-container">
+                <canvas id="main-canvas"></canvas>
+            </div>
+            <div class="interaction-hint">
+                <i class="fas fa-arrows-alt"></i> 拖拽画布调整位置
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Font Builder | 模块化字体设计器</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <header>
+                <div class="logo">
+                    <i class="fas fa-font"></i>
+                    <h1>ModularFont <span>Pro</span></h1>
+                </div>
+                <p class="tagline">基于网格规律的模块化字体创作</p>
+            </header>
+
+            <div class="controls-wrapper">
+                <section class="control-group">
+                    <label>网格尺寸 (Grid Size)</label>
+                    <div class="grid-presets">
+                        <button class="size-btn active" data-size="8">8x8</button>
+                        <button class="size-btn" data-size="12">12x12</button>
+                        <button class="size-btn" data-size="16">16x16</button>
+                    </div>
+                </section>
+
+                <section class="control-group">
+                    <label>模块形状 (Module Shape)</label>
+                    <div class="shape-selector">
+                        <button class="shape-btn active" data-shape="square" title="方块">
+                            <div class="icon square"></div>
+                        </button>
+                        <button class="shape-btn" data-shape="circle" title="圆点">
+                            <div class="icon circle"></div>
+                        </button>
+                        <button class="shape-btn" data-shape="arc-tl" title="圆弧-左上">
+                            <div class="icon arc-tl"></div>
+                        </button>
+                        <button class="shape-btn" data-shape="arc-tr" title="圆弧-右上">
+                            <div class="icon arc-tr"></div>
+                        </button>
+                        <button class="shape-btn" data-shape="arc-bl" title="圆弧-左下">
+                            <div class="icon arc-bl"></div>
+                        </button>
+                        <button class="shape-btn" data-shape="arc-br" title="圆弧-右下">
+                            <div class="icon arc-br"></div>
+                        </button>
+                    </div>
+                </section>
+
+                <section class="control-group">
+                    <label>基准字体 (Base Font)</label>
+                    <div class="font-controls">
+                        <input type="file" id="font-upload" accept=".ttf,.otf,.woff" hidden>
+                        <button class="secondary-btn" onclick="document.getElementById('font-upload').click()">
+                            <i class="fas fa-upload"></i> 上传字体
+                        </button>
+                        <select id="font-family-select">
+                            <option value="sans-serif">默认无衬线</option>
+                            <option value="serif">默认衬线</option>
+                            <option value="monospace">等宽字体</option>
+                        </select>
+                    </div>
+                </section>
+
+                <section class="control-group">
+                    <label>实时预览文字</label>
+                    <input type="text" id="preview-text" value="DESIGN" maxlength="12">
+                </section>
+
+                <section class="control-group">
+                    <label>模块间距: <span id="gap-val">0</span>px</label>
+                    <input type="range" id="module-gap" min="0" max="10" value="0">
+                </section>
+
+                <section class="control-group">
+                    <label>笔画粗细: <span id="weight-val">1.0</span></label>
+                    <input type="range" id="module-scale" min="0.1" max="1.5" value="1.0" step="0.1">
+                </section>
+            </div>
+
+            <footer class="sidebar-footer">
+                <button id="clear-grid" class="secondary-btn">
+                    <i class="fas fa-eraser"></i> 清空网格
+                </button>
+                <button id="download-btn" class="primary-btn">
+                    <i class="fas fa-download"></i> 导出字体图形
+                </button>
+            </footer>
+        </aside>
+
+        <main class="viewport">
+            <div class="editor-section">
+                <div class="grid-container" id="grid-canvas">
+                    <!-- Grid cells will be generated here -->
+                </div>
+                <div class="editor-hint">点击网格方块切换模块形状</div>
+            </div>
+            
+            <div class="preview-section">
+                <div class="preview-container" id="text-preview">
+                    <!-- Preview characters will be generated here -->
+                </div>
+                <div class="preview-label">PREVIEW SYSTEM</div>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

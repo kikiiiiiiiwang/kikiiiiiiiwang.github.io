@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid Draw | 模块绘画</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app">
+        <aside class="sidebar">
+            <header class="head">
+                <div class="title">
+                    <i class="fas fa-border-all"></i>
+                    <h1>Grid <span>Draw</span></h1>
+                </div>
+                <p class="sub">在网格上绘制抽象图形（六边形 / 方形 / 菱形）</p>
+            </header>
+
+            <section class="row">
+                <button class="btn" id="undo" title="Undo">undo</button>
+                <button class="btn" id="redo" title="Redo">redo</button>
+                <button class="btn" id="clear" title="Clear">clear</button>
+            </section>
+
+            <section class="group">
+                <label>网格类型</label>
+                <select id="grid-type">
+                    <option value="hex">Hex</option>
+                    <option value="square">Square</option>
+                    <option value="diamond">Diamond</option>
+                </select>
+            </section>
+
+            <section class="group">
+                <label>格子大小 <span id="cell-size-val">18</span></label>
+                <input type="range" id="cell-size" min="8" max="60" value="18" step="1">
+            </section>
+
+            <section class="group">
+                <label>线条透明度 <span id="grid-alpha-val">0.10</span></label>
+                <input type="range" id="grid-alpha" min="0" max="0.35" value="0.10" step="0.01">
+            </section>
+
+            <section class="group">
+                <label>填充颜色</label>
+                <input type="color" id="fill" value="#000000">
+            </section>
+
+            <section class="group">
+                <label>背景颜色</label>
+                <input type="color" id="bg" value="#ffffff">
+            </section>
+
+            <section class="group">
+                <label>导出</label>
+                <button class="btn primary" id="download">download</button>
+            </section>
+        </aside>
+
+        <main class="stage">
+            <div class="canvas-wrap">
+                <canvas id="canvas"></canvas>
+            </div>
+            <div class="toolbar">
+                <button class="tool active" data-tool="draw">draw</button>
+                <button class="tool" data-tool="erase">erase</button>
+                <button class="tool" data-tool="pan">pan</button>
+            </div>
+            <div class="hint">拖拽绘制 | 滚轮缩放 | pan 模式拖拽移动</div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

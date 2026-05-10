@@ -1,0 +1,217 @@
+:root {
+    --bg: #ffffff;
+    --text: #000000;
+    --muted: #888888;
+    --border: #eeeeee;
+    --panel: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Space Mono', monospace, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    height: 100vh;
+    overflow: hidden;
+}
+
+.app {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.sidebar {
+    width: 320px;
+    border-right: 1px solid var(--border);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+    background: var(--panel);
+    overflow: auto;
+}
+
+.head .title {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.head i {
+    font-size: 1.2rem;
+}
+
+.head h1 {
+    font-size: 1.2rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+}
+
+.head h1 span {
+    color: var(--muted);
+    font-weight: 400;
+    font-size: 0.8rem;
+    vertical-align: top;
+}
+
+.sub {
+    font-size: 0.7rem;
+    color: var(--muted);
+    letter-spacing: 0.5px;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.75rem;
+}
+
+.group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: flex;
+    justify-content: space-between;
+    gap: 0.75rem;
+}
+
+label span {
+    color: var(--muted);
+    font-weight: 700;
+}
+
+.btn {
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text);
+    font-family: inherit;
+    font-size: 0.9rem;
+    padding: 0.75rem 0.8rem;
+    cursor: pointer;
+    text-transform: lowercase;
+}
+
+.btn:hover {
+    border-color: var(--text);
+}
+
+.btn.primary {
+    background: var(--text);
+    color: #fff;
+    border-color: var(--text);
+}
+
+.btn.primary:hover {
+    opacity: 0.92;
+}
+
+select {
+    border: 1px solid var(--border);
+    background: transparent;
+    padding: 0.6rem;
+    font-family: inherit;
+    outline: none;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 2px;
+    background: var(--border);
+    outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 12px;
+    height: 12px;
+    background: var(--text);
+    cursor: pointer;
+    border-radius: 0;
+}
+
+input[type="color"] {
+    width: 100%;
+    height: 38px;
+    border: 1px solid var(--border);
+    background: transparent;
+    padding: 0;
+}
+
+.stage {
+    flex: 1;
+    position: relative;
+    background: #fcfcfc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem;
+}
+
+.canvas-wrap {
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    border: 1px solid #f3f3f3;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+canvas {
+    max-width: 100%;
+    max-height: 100%;
+    touch-action: none;
+}
+
+.toolbar {
+    position: absolute;
+    right: 2rem;
+    top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.tool {
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,0.9);
+    padding: 0.75rem 0.9rem;
+    font-family: inherit;
+    font-size: 0.9rem;
+    cursor: pointer;
+    text-transform: lowercase;
+}
+
+.tool.active {
+    background: var(--text);
+    color: #fff;
+    border-color: var(--text);
+}
+
+.hint {
+    position: absolute;
+    left: 2rem;
+    bottom: 2rem;
+    font-size: 0.65rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}

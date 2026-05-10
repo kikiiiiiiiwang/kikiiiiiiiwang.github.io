@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variable Mosaic | 动态方块马赛克生成器</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <header>
+                <div class="logo">
+                    <i class="fas fa-th-large"></i>
+                    <h1>PixelMosaic <span>Ultra</span></h1>
+                </div>
+                <p class="tagline">基于 SVG 路径的变长像素渲染</p>
+            </header>
+
+            <div class="controls-wrapper">
+                <section class="control-group">
+                    <label>导入矢量图形 (SVG)</label>
+                    <div class="upload-box" id="drop-zone">
+                        <i class="fas fa-bezier-curve"></i>
+                        <span>支持 AI 导出的 SVG 格式</span>
+                        <input type="file" id="svg-input" accept=".svg" hidden>
+                    </div>
+                </section>
+
+                <section class="control-group">
+                    <label>网格密度 (Grid Density): <span id="density-val">40</span></label>
+                    <input type="range" id="density" min="10" max="150" value="40">
+                </section>
+
+                <section class="control-group">
+                    <label>基础方块大小: <span id="size-val">0.8</span></label>
+                    <input type="range" id="base-size" min="0.1" max="1.5" value="0.8" step="0.1">
+                </section>
+
+                <section class="control-group">
+                    <label>大小随机变量 (Variation): <span id="var-val">0.2</span></label>
+                    <input type="range" id="variation" min="0" max="1" value="0.2" step="0.05">
+                </section>
+
+                <section class="control-group">
+                    <label>色彩模式</label>
+                    <select id="color-mode">
+                        <option value="original">原始图形色彩</option>
+                        <option value="mono-dark">极简黑</option>
+                        <option value="mono-light">极简白</option>
+                        <option value="random">随机艺术色</option>
+                    </select>
+                </section>
+
+                <section class="control-group">
+                    <label>背景纹理</label>
+                    <div class="toggle-row">
+                        <input type="checkbox" id="show-grid" checked>
+                        <span>显示参考网格</span>
+                    </div>
+                </section>
+
+                <section class="control-group">
+                    <label>图形缩放: <span id="scale-val">1.0</span></label>
+                    <input type="range" id="scale" min="0.1" max="4" value="1" step="0.1">
+                </section>
+            </div>
+
+            <footer class="sidebar-footer">
+                <button id="download-btn" class="primary-btn">
+                    <i class="fas fa-download"></i> 导出像素图形
+                </button>
+            </footer>
+        </aside>
+
+        <main class="viewport">
+            <div class="canvas-wrapper" id="canvas-container">
+                <canvas id="main-canvas"></canvas>
+            </div>
+            <div class="interaction-hint">
+                <i class="fas fa-mouse-pointer"></i> 拖拽调整构图 | 矢量路径实时映射
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

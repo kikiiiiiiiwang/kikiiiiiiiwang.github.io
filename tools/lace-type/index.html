@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LaceType | 蕾丝文字生成工具</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="light-theme">
+    <div class="tool-wrapper">
+        <!-- Header -->
+        <header class="tool-header">
+            <div class="brand">
+                <i class="fas fa-certificate"></i>
+                <h1>LaceType <span>v1.0</span></h1>
+            </div>
+            <p class="subtitle">将任何文字转化为写实蕾丝/十字绣风格</p>
+        </header>
+
+        <main class="tool-content">
+            <!-- Control Panel -->
+            <aside class="control-panel glass">
+                <section class="control-group">
+                    <label>文字管理</label>
+                    <div class="layer-actions">
+                        <button id="add-text-btn" class="secondary-btn"><i class="fas fa-plus"></i> 添加新文字</button>
+                        <button id="delete-text-btn" class="secondary-btn delete"><i class="fas fa-trash"></i> 删除选中</button>
+                    </div>
+                    <div id="layer-list" class="layer-list">
+                        <!-- Layers will be injected here -->
+                    </div>
+                </section>
+
+                <section class="control-group">
+                    <label>当前选中文字内容</label>
+                    <textarea id="text-input" placeholder="输入文字...">Art</textarea>
+                </section>
+
+                <section class="control-group">
+                    <label>字体选择</label>
+                    <select id="font-family">
+                        <option value="serif">优雅衬线 (Serif)</option>
+                        <option value="sans-serif">极简无衬线 (Sans)</option>
+                        <option value="'Times New Roman', serif">经典时报 (Times)</option>
+                        <option value="cursive">手写感 (Cursive)</option>
+                    </select>
+                    <div class="custom-font-upload">
+                        <label for="font-upload" class="upload-label">
+                            <i class="fas fa-file-font"></i> 导入自定义字体 (.ttf/.otf)
+                        </label>
+                        <input type="file" id="font-upload" accept=".ttf,.otf,.woff,.woff2" style="display: none;">
+                        <p id="font-status" class="status-text"></p>
+                    </div>
+                </section>
+
+                <section class="control-group">
+                    <label>蕾丝密度 (单元大小: <span id="size-val">8</span>px)</label>
+                    <input type="range" id="pattern-size" min="4" max="16" value="8" step="1">
+                </section>
+
+                <section class="control-group">
+                    <label>纹理粗细</label>
+                    <input type="range" id="line-weight" min="1" max="3" value="1.5" step="0.5">
+                </section>
+
+                <section class="control-group">
+                    <label>字体形变</label>
+                    <div class="transform-controls">
+                        <div class="control-sub">
+                            <span>大小</span>
+                            <input type="range" id="font-scale" min="0.5" max="2" value="1" step="0.1">
+                        </div>
+                        <div class="control-sub">
+                            <span>旋转</span>
+                            <input type="range" id="font-rotation" min="-180" max="180" value="0" step="1">
+                        </div>
+                        <div class="control-sub">
+                            <span>倾斜</span>
+                            <input type="range" id="font-skew" min="-50" max="50" value="0" step="1">
+                        </div>
+                    </div>
+                </section>
+
+                <section class="control-group">
+                    <label>填充模式</label>
+                    <div class="toggle-group">
+                        <button class="toggle-btn active" data-mode="x">十字纹 (X)</button>
+                        <button class="toggle-btn" data-mode="dot">圆点纹 (●)</button>
+                        <button class="toggle-btn" data-mode="stipple">散点纹 (⁖)</button>
+                    </div>
+                </section>
+
+                <div class="action-footer">
+                    <button id="download-btn" class="primary-btn">
+                        <i class="fas fa-download"></i> 导出作品
+                    </button>
+                </div>
+            </aside>
+
+            <!-- Canvas Area -->
+            <section class="preview-area">
+                <div class="canvas-container glass">
+                    <canvas id="main-canvas"></canvas>
+                </div>
+                <div class="preview-info">
+                    <p><i class="fas fa-info-circle"></i> 提示：基于 Canvas 像素采样技术，实时模拟纤维纹理。</p>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="lace.js"></script>
+</body>
+</html>
